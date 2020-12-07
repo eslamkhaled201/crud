@@ -1,8 +1,35 @@
 #product{
+    overflow: hidden;
+    border-radius: 5px;
     position: relative;
+    padding-bottom: 1rem;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.185);
+}
+.row{
+    padding: 1rem;
+}
+.col-md-4{
+    padding-left: 0;
+    padding-right: 0;
+}
+@media (max-width : 750px ) and (min-width : 550px ){
+    .row{
+        justify-content: space-between;
+    }
+    #product{
+        max-width: 48%;
+    }
+}
+@media (min-width : 751px){
+    .col-md-4{
+        max-width: 30%;
+        margin-right: 1rem;
+    }
+}
+#product p ,#product h6 ,#product h4{
+    padding: 0 1rem;
 }
 #product .badge{
-    
     position: absolute;
     right:  15px;
     letter-spacing: 1px;
@@ -55,7 +82,7 @@
 #catinp{
     width: 50px;
 }
-#confirmbtn{
+#SaveDatabtn{
     display: none;
 }
 .form-group small{
@@ -63,11 +90,4 @@
 }
 .alert{
     padding: 5px;
-}
-.alert-success{
-    padding: 0px 10px 0px 10px;
-    background-color: rgb(42, 189, 42);
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    width: 13%;
 }

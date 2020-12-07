@@ -1,36 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>crud</title>
-    <link rel="stylesheet" href="css/all.min.css">
+    <link href="css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <div class="container">
+    <div class="container ">
         <div class="form-group py-1 ">
             <label> Product Name : </label>
-            <input  id="productNameInp" class="form-control ">
-            <small id="requiredName" class="form-text text-muted  my-1">Name must strat with capital letter and contains 3 to 8 small letter.</small>
+            <input id="productNameInp" class="form-control " name="productDataIn" >
+            <small id="requiredName" class="form-text text-muted  my-1">Name must strat with capital letter and contains
+                3 to 8 small letter.</small>
         </div>
         <div class="form-group py-1 ">
             <label> Product Price : </label>
-            <input id="productPriceInp" class="form-control " type="number">
+            <input id="productPriceInp" class="form-control " name="productDataIn"  type="number">
             <small id="requiredName" class="form-text text-muted  my-1 ">Price must be from 1000 to 50000.</small>
         </div>
         <div class="form-group py-1 ">
             <label> Product Category : </label>
-            <input id="productCatInp" class="form-control ">
-            <small id="requiredName" class="form-text text-muted  my-1 ">Category must strat with capital letter and contains 3 to 10 small letter.</small>
+            <input id="productCatInp" class="form-control " name="productDataIn" >
+            <small id="requiredName" class="form-text text-muted  my-1 ">Category must strat with capital letter and
+                contains 3 to 10 small letter.</small>
         </div>
         <div class="form-group py-1 ">
             <label> Product Description : </label>
-            <textarea id="productDescInp" class="form-control "> </textarea>
-            <small id="requiredName" class="form-text text-muted  my-1 ">Description must strat with capital letter and end with (.).</small>
+            <textarea id="productDescInp" class="form-control " name="productDataIn" > </textarea>
+            <small id="requiredName" class="form-text text-muted  my-1 ">Description must strat with capital letter and
+                end with (.).</small>
         </div>
         <div class="inp-container overflow-auto">
             <div class="input-group sale-inp  mr-3 float-left">
@@ -45,27 +48,27 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text ">
                         <input type="radio" name="sale" value="false">
-
                     </div>
                     <label class="sale-label"> NoSale </label>
                 </div>
             </div>
         </div>
-        <button disabled id="addProduct" type="button" class="btn btn-outline-primary">Add Product</button>
+        <button id="addProduct" type="button" class="btn btn-outline-primary">Add Product</button>
+        <button id="SaveDatabtn" class="conbtn btn btn-outline-success mx-1 ">Save Changes</button>
         <h1 class="text-center font-wieght-bold py-3">Our Products</h1>
         <input placeholder="Search" onkeyup="searchProducts(this.value)" type="text"
             class="form-control w-50 m-auto my-3 text-center ">
     </div>
-    
-
     <div class="container">
         <div id="proudcts" class="row mt-3 d-flex  ">
 
         </div>
     </div>
-    
-            <script src="js/jquery-3.4.1.js"></script>
-            <script src="js/js.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
