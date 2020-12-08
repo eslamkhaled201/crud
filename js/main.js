@@ -21,6 +21,8 @@ if (localStorage.getItem("products") == null) {
 }
 
 /** functions validation for inputs  */
+
+/** function for checking any data will be entered in name input element  */
 function IsValidName(){
     var productName = $(productNameInp).val();
     var validName = /[A-Z][a-z]{3,15}([0-9]{0,5})?$/;
@@ -38,6 +40,8 @@ function IsValidName(){
         return true;
     }
 }
+
+/** function for checking any data will be entered in price input element  */
 function IsValidPrice(){
     var productPrice = $(productPriceInp).val();
     var validPrice =/([1-4][0-9][0-9][0-9]([0-9])?|50000)$/
@@ -56,7 +60,7 @@ function IsValidPrice(){
     }
 }
 
-/** function for checking any data wil be entered in category input element  */
+/** function for checking any data will be entered in category input element  */
 function IsValidCategory(){
     var productCategory = $(productCatInp).val();
     var validCat = /[A-Z][a-z]{1,10}$/;
@@ -75,7 +79,7 @@ function IsValidCategory(){
     }
 }
 
-/** function for checking any data wil be entered in Description input element  */
+/** function for checking any data will be entered in Description input element  */
 function IsValidDescription(){
     var productDesc = $(productDescInp).val();
     var validDesc = /[A-z][a-z][.]{1}$/;
@@ -102,7 +106,8 @@ productDataInputs.forEach(item =>{
 })
 
 
-/** function for adding new product  */
+/** function for adding new product by taking product entered data and 
+    save it at the global store array and local storage */
 $("#addProduct").click(function addProduct() {
     if(IsValidName()==true && IsValidPrice()==true && IsValidCategory()==true &&IsValidDescription()==true){
         var SaleElements = $("input[name='sale']");
@@ -134,7 +139,7 @@ function displayProducts(arrayOfProducts) {
     let products = "";
     let arrLength = arrayOfProducts.length;
     console.log("🚀 ~ file: main.js ~ line 108 ~ displayProducts ~ arrLength", arrLength)
-    for (var i = arrLength-1; i > 0; i--) {
+    for (var i = 0; i < arrLength; i++) {
         if (arrayOfProducts[i].sale == true) {
             products += ` <div  id="product" class="col-md-4 col-sm-6 mb-3 ">
             <img  class="img-fluid " src="images/2.jpg" alt="">
@@ -161,25 +166,39 @@ function displayProducts(arrayOfProducts) {
     }
     document.getElementById("proudcts").innerHTML = products;
 }
+
+/** function clearing inputs data after adding or updating  */
 function clearInp() {
     productDataInputs.forEach(input => {
         input.value = "";
     });
 }
+
+/** function deletes product or item by its index   */
 function deleteProduct(index) {
     productsStore.splice(index, 1)
     localStorage.setItem("products", JSON.stringify(productsStore))
     displayProducts(productsStore);
 }
+
+/** function searching for elements name  */
 function searchProducts(word) {
-    var searchedProducts = [];
-    for (i = 0; i < productsStore.length; i++) {
-        if (productsStore[i].name.toLowerCase().includes(word.toLowerCase()) == true) {
-          searchedProducts.push(productsStore[i])
+    let validSearchPattern = /([a-zA-Z0-9])$/;
+    if (validSearchPattern.test(word)) {
+        var searchedProducts = [];
+        for (i = 0; i < productsStore.length; i++) {
+            if (productsStore[i].name.toLowerCase().includes(word.toLowerCase()) == true) {
+              searchedProducts.push(productsStore[i])
+            }
         }
+        displayProducts(searchedProducts);
+    } else {
+        alert("enter valid product name")
     }
-    displayProducts(searchedProducts);
 }
+
+/*** functions for update operation */
+/** this function enables update operation by take data of product and put it at input forms  */
 function updateProduct(index) {
     indexForEditProduct = index ;
    let name = productsStore[index].name ;
@@ -192,6 +211,8 @@ function updateProduct(index) {
     $(productCatInp).val(Category) 
     $(saveUpdatedDataBtn).fadeIn(300);
 }
+
+/** this funtions takes updated data from inputs and save it at the global store array and local storage*/
 $(saveUpdatedDataBtn).click(function saveProductData() {
     productsStore[indexForEditProduct].name =$(productNameInp).val();
     productsStore[indexForEditProduct].category = $(productCatInp).val();
