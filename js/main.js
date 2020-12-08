@@ -25,10 +25,16 @@ function IsValidName(){
     var productName = $(productNameInp).val();
     var validName = /[A-Z][a-z]{3,15}([0-9]{0,5})?$/;
     if (validName.test(productName) == false ) {
-        $("small:contains('Name')").removeClass('text-muted alert alert-success').addClass(' alert alert-danger').text("Name must strat with capital letter and contains 3 to 8 small letter.");
+        $("small:contains('Name')")
+        .removeClass('text-muted alert alert-success')
+        .addClass(' alert alert-danger')
+        .text("Name must strat with capital letter and contains 3 to 8 small letter.");
         return false;
     } else { 
-        $("small:contains('Name')").removeClass('text-muted alert alert-danger').addClass(' alert alert-success').text("Valid Name");
+        $("small:contains('Name')")
+        .removeClass('text-muted alert alert-danger')
+        .addClass(' alert alert-success')
+        .text("Valid Name");
         return true;
     }
 }
@@ -36,32 +42,53 @@ function IsValidPrice(){
     var productPrice = $(productPriceInp).val();
     var validPrice =/([1-4][0-9][0-9][0-9]([0-9])?|50000)$/
     if (validPrice.test(productPrice) == false) {
-        $("small:contains('Price')").removeClass('text-muted alert alert-success').addClass(' alert alert-danger').text("Price must be from 1000 to 50000.");
+        $("small:contains('Price')")
+        .removeClass('text-muted alert alert-success')
+        .addClass(' alert alert-danger')
+        .text("Price must be from 1000 to 50000.");
         return false;
     } else { 
-        $("small:contains('Price')").removeClass('text-muted alert alert-danger').addClass(' alert alert-success').text("Valid Price");
+        $("small:contains('Price')")
+        .removeClass('text-muted alert alert-danger')
+        .addClass(' alert alert-success')
+        .text("Valid Price");
         return true;
     }
 }
+
+/** function for checking any data wil be entered in category input element  */
 function IsValidCategory(){
     var productCategory = $(productCatInp).val();
     var validCat = /[A-Z][a-z]{1,10}$/;
     if (validCat.test(productCategory) == false) {
-        $("small:contains('Category')").removeClass('text-muted alert alert-success').addClass(' alert alert-danger').text("Category must strat with capital letter and contains 3 to 10 small letter.");
+        $("small:contains('Category')")
+        .removeClass('text-muted alert alert-success')
+        .addClass(' alert alert-danger')
+        .text("Category must strat with capital letter and contains 3 to 10 small letter.");
         return false;
     } else { 
-        $("small:contains('Category')").removeClass('text-muted alert alert-danger').addClass(' alert alert-success').text("Valid Category");
+        $("small:contains('Category')")
+        .removeClass('text-muted alert alert-danger')
+        .addClass(' alert alert-success')
+        .text("Valid Category");
         return true;
     }
 }
+
+/** function for checking any data wil be entered in Description input element  */
 function IsValidDescription(){
     var productDesc = $(productDescInp).val();
     var validDesc = /[A-z][a-z][.]{1}$/;
     if (validDesc.test(productDesc) == false) {
-        $("small:contains('Description')").removeClass('text-muted alert alert-success').addClass(' alert alert-danger').text("Description must strat with capital letter and end with (.).");
+        $("small:contains('Description')")
+        .removeClass('text-muted alert alert-success')
+        .addClass(' alert alert-danger')
+        .text("Description must strat with capital letter and end with (.).");
         return false;
     } else { 
-        $("small:contains('Description')").removeClass('text-muted alert alert-danger').addClass(' alert alert-success').text("Valid Description");
+        $("small:contains('Description')")
+        .removeClass('text-muted alert alert-danger')
+        .addClass(' alert alert-success').text("Valid Description");
         return true;
     }
 }
@@ -74,6 +101,8 @@ productDataInputs.forEach(item =>{
     })
 })
 
+
+/** function for adding new product  */
 $("#addProduct").click(function addProduct() {
     if(IsValidName()==true && IsValidPrice()==true && IsValidCategory()==true &&IsValidDescription()==true){
         var SaleElements = $("input[name='sale']");
@@ -96,12 +125,16 @@ $("#addProduct").click(function addProduct() {
         clearInp();
     }else{
         window.alert("enter valid product data")
-    }
-   
+    } 
 })
+
+
+/** dynamic function for displaying products store or array */
 function displayProducts(arrayOfProducts) {
     let products = "";
-    for (i = 0; i < arrayOfProducts.length; i++) {
+    let arrLength = arrayOfProducts.length;
+    console.log("🚀 ~ file: main.js ~ line 108 ~ displayProducts ~ arrLength", arrLength)
+    for (var i = arrLength-1; i > 0; i--) {
         if (arrayOfProducts[i].sale == true) {
             products += ` <div  id="product" class="col-md-4 col-sm-6 mb-3 ">
             <img  class="img-fluid " src="images/2.jpg" alt="">
@@ -136,7 +169,7 @@ function clearInp() {
 function deleteProduct(index) {
     productsStore.splice(index, 1)
     localStorage.setItem("products", JSON.stringify(productsStore))
-    displayProducts();
+    displayProducts(productsStore);
 }
 function searchProducts(word) {
     var searchedProducts = [];

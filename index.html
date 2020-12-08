@@ -14,29 +14,30 @@
     <div class="container ">
         <div class="form-group py-1 ">
             <label> Product Name : </label>
-            <input id="productNameInp" class="form-control " name="productDataIn" >
-            <small id="requiredName" class="form-text text-muted  my-1">Name must strat with capital letter and contains
+            <input id="productNameInp" class="form-control " name="productDataIn">
+            <small class="form-text h-auto text-muted  my-1">Name must strat with capital letter and contains
                 3 to 8 small letter.</small>
         </div>
         <div class="form-group py-1 ">
             <label> Product Price : </label>
-            <input id="productPriceInp" class="form-control " name="productDataIn"  type="number">
-            <small id="requiredName" class="form-text text-muted  my-1 ">Price must be from 1000 to 50000.</small>
+            <input id="productPriceInp" class="form-control " name="productDataIn" type="number">
+            <small class="form-text h-auto text-muted  my-1 ">Price must be from 1000 to 50000.
+            </small>
         </div>
         <div class="form-group py-1 ">
             <label> Product Category : </label>
-            <input id="productCatInp" class="form-control " name="productDataIn" >
-            <small id="requiredName" class="form-text text-muted  my-1 ">Category must strat with capital letter and
+            <input id="productCatInp" class="form-control " name="productDataIn">
+            <small class="form-text h-auto text-muted  my-1 ">Category must strat with capital letter and
                 contains 3 to 10 small letter.</small>
         </div>
         <div class="form-group py-1 ">
             <label> Product Description : </label>
-            <textarea id="productDescInp" class="form-control " name="productDataIn" > </textarea>
-            <small id="requiredName" class="form-text text-muted  my-1 ">Description must strat with capital letter and
+            <textarea id="productDescInp" class="form-control " name="productDataIn"> </textarea>
+            <small class="form-text h-auto text-muted  my-1 ">Description must strat with capital letter and
                 end with (.).</small>
         </div>
-        <div class="inp-container overflow-auto">
-            <div class="input-group sale-inp  mr-3 float-left">
+        <div class="inp-container d-flex">
+            <div class="input-group sale-inp mr-2 w-25">
                 <div class="input-group-prepend">
                     <div class="input-group-text ">
                         <input type="radio" name="sale" value="True">
@@ -44,7 +45,7 @@
                 </div>
                 <label class="sale-label"> Sale </label>
             </div>
-            <div class="input-group sale-inp  ">
+            <div class="input-group sale-inp w-25">
                 <div class="input-group-prepend">
                     <div class="input-group-text ">
                         <input type="radio" name="sale" value="false">
