@@ -44,7 +44,7 @@ function IsValidName(){
 /** function for checking any data will be entered in price input element  */
 function IsValidPrice(){
     var productPrice = $(productPriceInp).val();
-    var validPrice =/([1-4][0-9][0-9][0-9]([0-9])?|50000)$/
+    var validPrice =/([1-9][0-9][0-9][0-9]?|50000)$/
     if (validPrice.test(productPrice) == false) {
         $("small:contains('Price')")
         .removeClass('text-muted alert alert-success')
