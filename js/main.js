@@ -1,8 +1,6 @@
 /** Global variables */
 let productsStore;
-let editWindow = " ";
 let saveUpdatedDataBtn = $("#SaveDatabtn");
-let productDataInputs = document.getElementsByName("productDataIn") 
 let indexForEditProduct ;
 let productNameInp = $("#productNameInp");
 let productPriceInp = $("#productPriceInp");
@@ -42,6 +40,17 @@ function IsValidName(){
 }
 
 /** function for checking any data will be entered in price input element  */
+
+let IsValidInput = (Pattern, inputElement) => {
+    if (Pattern.test(inputElement.value)) {
+        $(inputElement).next("small").addClass('d-none');
+        return true;
+    } else {
+        $('.req-patten-box').removeClass('d-none');
+        return false;
+    }
+}
+
 function IsValidPrice(){
     var productPrice = $(productPriceInp).val();
     var validPrice =/([1-9][0-9][0-9][0-9]?|50000)$/
@@ -96,14 +105,19 @@ function IsValidDescription(){
         return true;
     }
 }
-productDataInputs.forEach(item =>{
-    item.addEventListener("keyup" , ()=>{
-        IsValidName();
-        IsValidPrice();
-        IsValidCategory();
-        IsValidDescription();
-    })
-})
+$("#productNameInp").keyup(function (){
+    IsValidName();
+});
+$("#productPriceInp").keyup(function (){ 
+    IsValidPrice();
+});
+$("#productCatInp").keyup(function (){ 
+    IsValidCategory();
+});
+$("#productDescInp").keyup(function (){ 
+    IsValidDescription();
+});
+
 
 
 /** function for adding new product by taking product entered data and 
